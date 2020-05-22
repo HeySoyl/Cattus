@@ -18,7 +18,7 @@ struct ImagePickerExampleView: View {
                     .resizable()
                     .aspectRatio(contentMode: .fit)
             }
-            Button("Pick image") {
+            Button("Photo") {
                 self.showImagePicker.toggle()
             }
         }
@@ -54,8 +54,8 @@ struct ImagePickerExampleView: View {
             }
             .actionSheet(isPresented: $showPicker) {
                 ActionSheet(title: Text("iOSDevCenters"), message: Text("SubTitle"), buttons: [
-                    .default(Text("Save")) { self.showImagePicker.toggle() },
-                    .default(Text("Delete")) { self.showCamraPicker.toggle() },
+                    .default(Text("Photo")) { self.showImagePicker.toggle() },
+                    .default(Text("Camera")) { self.showCamraPicker.toggle() },
                     .cancel()
                 ])
             }
