@@ -5,22 +5,24 @@ import PackageDescription
 
 let package = Package(
     name: "Cattus",
+    /// 支持的平台和版本
+    platforms: [.iOS(.v13)],
     products: [
-        // Products define the executables and libraries produced by a package, and make them visible to other packages.
+        /// 产品定义了由包制作的可执行文件和库，并使它们能够在其他包中显现。
         .library(
             name: "Cattus",
             targets: ["Cattus"]),
     ],
+    /// 依赖其他 Swift Package Manager
     dependencies: [
-        // Dependencies declare other packages that this package depends on.
-        // .package(url: /* package url */, from: "1.0.0"),
+        /// .package(url: /* package url */, from: "1.0.0"),
     ],
     targets: [
         // Targets are the basic building blocks of a package. A target can define a module or a test suite.
         // Targets can depend on other targets in this package, and on products in packages which this package depends on.
         .target(
             name: "Cattus",
-            dependencies: []),
+            dependencies: []),  /// 导入依赖
         .testTarget(
             name: "CattusTests",
             dependencies: ["Cattus"]),
