@@ -14,6 +14,7 @@ public struct Cattus: UIViewControllerRepresentable {
     public func makeUIViewController(context: Context) -> UIImagePickerController {
         let picker = UIImagePickerController()
         picker.sourceType = self.sourceType
+        picker.allowsEditing = true //允许图片编辑
         picker.delegate = context.coordinator
         return picker
     }
@@ -36,9 +37,19 @@ public struct Cattus: UIViewControllerRepresentable {
             self.onDismiss = onDismiss
             self.onImagePicked = onImagePicked
         }
-
+        
+        /*
+         指定用户选择的媒体类型 mediaType
+         裁剪尺寸 CropRect
+         媒体的URL mediaURL
+         原件的URL phAsset
+         当来数据来源是照相机的时候这个值才有效 mediaMetadata
+         */
         public func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey: Any]) {
-            if let image = info[.originalImage] as? UIImage {
+            
+            // 原始图片 originalImage
+            // 编辑的图片 editedImage
+            if let image = info[.editedImage] as? UIImage {
                 self.onImagePicked(image)
             }
             self.onDismiss()
